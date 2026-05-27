@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html, body, #root {
+  height: 100%;
+}
+
 /* Hide scrollbar but keep scrollable */
 .hide-scrollbar {
   -ms-overflow-style: none;  /* IE and Edge */
