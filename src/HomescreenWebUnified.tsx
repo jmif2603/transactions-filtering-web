@@ -191,7 +191,7 @@ const SectionLabel = ({ label }: { label: string }) => (
 
 // ============ Type helper ============
 
-type WalletBenefitType = 'HSA_FSA' | 'HRA' | 'DCFSA' | 'LPFSA' | 'RemoteWork' | 'Transit' | 'LSA' | 'Parking' | 'Rewards' | 'Funding';
+type WalletBenefitType = 'HSA_FSA' | 'HRA' | 'DCFSA' | 'LPFSA' | 'RemoteWork' | 'Transit' | 'LSA' | 'Parking' | 'Rewards' | 'Funding' | 'Investment';
 
 const toBenefit = (b: Transaction['benefit']): WalletBenefitType => b;
 
@@ -209,7 +209,7 @@ const formatDateRange = (start: Date, end: Date): string => {
   return `${startStr} – ${endStr}`;
 };
 
-const BENEFIT_OPTIONS = ['Health Savings', 'HRA', 'DCFSA', 'LPFSA', 'Remote Work', 'Transit', 'LSA', 'Parking', 'Rewards'];
+const BENEFIT_OPTIONS = ['Health Savings', 'HRA', 'DCFSA', 'LPFSA', 'Remote Work', 'Transit', 'LSA', 'Parking', 'Rewards', 'Investment Account'];
 const TYPE_OPTIONS = ['Money In', 'Money Out'];
 const STATUS_OPTIONS = ['Cleared', 'Pending'];
 const DATE_RANGE_OPTIONS = ['Last 24 Hours', 'Last 3 days', 'Last 7 days', 'Last 14 days', 'Last 30 days'];

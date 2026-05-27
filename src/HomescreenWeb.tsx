@@ -530,7 +530,7 @@ const SectionLabel = ({ label }: { label: string }) => (
 
 // ============ Type helper ============
 
-type WalletBenefitType = 'HSA_FSA' | 'HRA' | 'DCFSA' | 'LPFSA' | 'RemoteWork' | 'Transit' | 'LSA' | 'Parking' | 'Rewards' | 'Funding';
+type WalletBenefitType = 'HSA_FSA' | 'HRA' | 'DCFSA' | 'LPFSA' | 'RemoteWork' | 'Transit' | 'LSA' | 'Parking' | 'Rewards' | 'Funding' | 'Investment';
 
 const toBenefit = (b: Transaction['benefit']): WalletBenefitType => b;
 
@@ -763,7 +763,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                 <>
                   <FilterDropdown
                     label="Benefit Account"
-                    options={['Health Savings', 'HRA', 'DCFSA', 'LPFSA', 'Remote Work', 'Transit', 'LSA', 'Parking', 'Rewards']}
+                    options={['Health Savings', 'HRA', 'DCFSA', 'LPFSA', 'Remote Work', 'Transit', 'LSA', 'Parking', 'Rewards', 'Investment Account']}
                     selected={benefitAccountSelected}
                     isOpen={benefitAccountOpen}
                     onToggle={() => setBenefitAccountOpen(o => !o)}

@@ -11,7 +11,8 @@ type BenefitType =
   | 'LSA'
   | 'Parking'
   | 'Rewards'
-  | 'Funding';
+  | 'Funding'
+  | 'Investment';
 
 type TransactionType = 'MoneyIn' | 'MoneyOut' | 'Pending';
 
