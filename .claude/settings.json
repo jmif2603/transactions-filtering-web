@@ -3,7 +3,11 @@
     "allow": [
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5175/transactions-filtering-web/)",
       "Read(//Users/jessiekarch/vscodeProjs/transactions-filtering-mobile/src/**)",
-      "Read(//Users/jessiekarch/vscodeProjs/transactions-filtering-mobile/**)"
+      "Read(//Users/jessiekarch/vscodeProjs/transactions-filtering-mobile/**)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/transactions-filtering-web/)",
+      "Bash(cat /tmp/vite-web.log)",
+      "Read(//private/tmp/**)"
     ],
     "additionalDirectories": [
       "/Users/jessiekarch/vscodeProjs/transactions-filtering-mobile/src"

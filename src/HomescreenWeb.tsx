@@ -608,8 +608,11 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
     return true;
   });
 
-  const filteredPending = filteredTransactions.filter(t => t.type === 'Pending');
-  const filteredCleared = filteredTransactions.filter(t => t.type === 'Cleared');
+  const byDateDesc = (a: { date: string }, b: { date: string }) =>
+    new Date(b.date).getTime() - new Date(a.date).getTime();
+
+  const filteredPending = filteredTransactions.filter(t => t.type === 'Pending').sort(byDateDesc);
+  const filteredCleared = filteredTransactions.filter(t => t.type === 'Cleared').sort(byDateDesc);
 
   const navItems = locale === 'en' ? healthWalletNavItemsEn : healthWalletNavItemsEs;
   const logOutLabel = locale === 'en' ? 'Log Out' : 'Carrar la sesión';
