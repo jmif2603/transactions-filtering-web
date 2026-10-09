@@ -31,7 +31,7 @@ const SelectedFilterB = ({
       >
         <span
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 400,
             color: '#60758f',
@@ -57,7 +57,7 @@ const SelectedFilterB = ({
         >
           <span
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 15,
               fontWeight: 400,
               color: 'white',

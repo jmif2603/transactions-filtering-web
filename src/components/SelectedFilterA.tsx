@@ -33,7 +33,7 @@ const SelectedFilterA = ({
       <div style={{ display: 'flex', alignItems: 'center', paddingLeft: 8 }}>
         <span
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 400,
             color: '#60758f',
@@ -45,7 +45,7 @@ const SelectedFilterA = ({
         </span>
         <span
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 400,
             color: '#0f2b4d',

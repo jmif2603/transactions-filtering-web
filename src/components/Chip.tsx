@@ -57,7 +57,7 @@ const Chip = ({ label = 'Spending Category', size = 'Large', leftIcon = false, r
       {leftIcon && renderIcon()}
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 13,
           fontWeight: 500,
           color: selected ? 'white' : '#60758f',

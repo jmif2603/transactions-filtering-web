@@ -161,7 +161,7 @@ const MobileBottomNavTab = ({
       {/* Label */}
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 10,
           fontWeight: 500,
           lineHeight: '15px',

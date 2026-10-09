@@ -222,7 +222,7 @@ const DateRangeCustomRange = ({
         {/* Month header */}
         <div style={{ display: 'flex', gap: 4, marginBottom: 15 }}>
           <span style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 400,
             color: colors.textDark,
@@ -231,7 +231,7 @@ const DateRangeCustomRange = ({
             {MONTHS[month]}
           </span>
           <span style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 400,
             color: colors.textDark,
@@ -276,7 +276,7 @@ const DateRangeCustomRange = ({
                     }}
                   >
                     <span style={{
-                      fontFamily: 'Roboto, sans-serif',
+                      fontFamily: 'Inter, sans-serif',
                       fontSize: 15,
                       fontWeight: isStart || isEnd ? 500 : 400,
                       color: isStart || isEnd
@@ -360,7 +360,7 @@ const DateRangeCustomRange = ({
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <span style={{
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 15,
                 fontWeight: 400,
                 color: colors.textMuted,
@@ -370,7 +370,7 @@ const DateRangeCustomRange = ({
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span style={{
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 26,
                   fontWeight: 400,
                   color: colors.textDark,
@@ -379,7 +379,7 @@ const DateRangeCustomRange = ({
                   {formatDate(startDate) || 'startDate'}
                 </span>
                 <span style={{
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 26,
                   fontWeight: 400,
                   color: colors.textDark,
@@ -388,7 +388,7 @@ const DateRangeCustomRange = ({
                   -
                 </span>
                 <span style={{
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 26,
                   fontWeight: 400,
                   color: colors.textDark,
@@ -443,7 +443,7 @@ const DateRangeCustomRange = ({
                 border: `2px solid ${colors.primary}`,
                 borderRadius: 6,
                 color: colors.white,
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 15,
                 fontWeight: 400,
                 lineHeight: '21px',
@@ -475,7 +475,7 @@ const DateRangeCustomRange = ({
                   border: `2px solid ${colors.primary}`,
                   borderRadius: 6,
                   color: colors.white,
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 15,
                   fontWeight: 400,
                   lineHeight: '21px',

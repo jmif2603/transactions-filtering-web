@@ -70,7 +70,7 @@ const WalletTransactionListItemWeb = ({
         <BenefitTransactionIcon benefit={benefit} type={iconType} />
         <p
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 15,
             fontWeight: 500,
             lineHeight: '22.5px',
@@ -89,7 +89,7 @@ const WalletTransactionListItemWeb = ({
       {/* Date */}
       <p
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 13,
           fontWeight: 400,
           lineHeight: '19.5px',
@@ -106,7 +106,7 @@ const WalletTransactionListItemWeb = ({
       {/* Benefit account */}
       <p
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 13,
           fontWeight: 400,
           lineHeight: '19.5px',
@@ -133,7 +133,7 @@ const WalletTransactionListItemWeb = ({
         {type === 'Pending' ? (
           <p
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 15,
               fontWeight: 500,
               lineHeight: '22.5px',
@@ -148,7 +148,7 @@ const WalletTransactionListItemWeb = ({
         ) : (
           <p
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 15,
               fontWeight: 500,
               lineHeight: '22.5px',

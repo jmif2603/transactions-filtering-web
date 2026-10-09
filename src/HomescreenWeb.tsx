@@ -90,7 +90,7 @@ const FilterDropdown = ({ label, options, selected, isOpen, onToggle, onToggleOp
           paddingBottom: 8,
           height: 40,
           cursor: 'pointer',
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 15,
           color: colors.textDark,
           letterSpacing: '-0.15px',
@@ -144,7 +144,7 @@ const FilterDropdown = ({ label, options, selected, isOpen, onToggle, onToggleOp
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 13,
                   color: colors.primary,
                   padding: '4px 12px',
@@ -243,7 +243,7 @@ const TransactionDateFilter = ({ selected, savedCustomRange, isOpen, onToggle, o
           paddingBottom: 8,
           height: 40,
           cursor: 'pointer',
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 15,
           color: colors.textDark,
           letterSpacing: '-0.15px',
@@ -314,7 +314,7 @@ const TransactionDateFilter = ({ selected, savedCustomRange, isOpen, onToggle, o
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 13,
                   color: colors.primary,
                   padding: '4px 12px',
@@ -405,13 +405,13 @@ const NotificationBanner = ({
 
     {/* Text */}
     <div style={{ flex: 1, minWidth: 0 }}>
-      <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 500, color: colors.textDark, margin: 0 }}>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 500, color: colors.textDark, margin: 0 }}>
         {title}
       </p>
-      <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 400, color: colors.textMuted, margin: '2px 0 0' }}>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400, color: colors.textMuted, margin: '2px 0 0' }}>
         {body}
       </p>
-      <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 11, fontWeight: 400, color: colors.textMuted, margin: '4px 0 0' }}>
+      <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 11, fontWeight: 400, color: colors.textMuted, margin: '4px 0 0' }}>
         {date}
       </p>
     </div>
@@ -424,7 +424,7 @@ const NotificationBanner = ({
           background: 'none',
           border: 'none',
           cursor: 'pointer',
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 13,
           color: colors.textMuted,
           padding: 0,
@@ -467,13 +467,13 @@ const AccountCard = ({ icon, name, badge, amount, limit, subtitle, onClick }: Ac
     {/* Title row */}
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
       {icon}
-      <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, fontWeight: 500, color: colors.textDark, flex: 1 }}>
+      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 500, color: colors.textDark, flex: 1 }}>
         {name}
       </span>
       {badge && (
         <span
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 10,
             fontWeight: 500,
             color: colors.primary,
@@ -491,18 +491,18 @@ const AccountCard = ({ icon, name, badge, amount, limit, subtitle, onClick }: Ac
 
     {/* Amount */}
     <div style={{ marginBottom: 4 }}>
-      <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 26, fontWeight: 700, color: colors.textDark, letterSpacing: -0.52 }}>
+      <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 26, fontWeight: 700, color: colors.textDark, letterSpacing: -0.52 }}>
         ${amount}
       </span>
       {limit && (
-        <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, fontWeight: 400, color: colors.textMuted }}>
+        <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 400, color: colors.textMuted }}>
           {' '}/ ${limit}
         </span>
       )}
     </div>
 
     {/* Subtitle */}
-    <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, fontWeight: 400, color: colors.textMuted, margin: 0 }}>
+    <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, fontWeight: 400, color: colors.textMuted, margin: 0 }}>
       {subtitle}
     </p>
   </div>
@@ -514,7 +514,7 @@ const SectionLabel = ({ label }: { label: string }) => (
   <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '20px 0 8px' }}>
     <span
       style={{
-        fontFamily: 'Roboto, sans-serif',
+        fontFamily: 'Inter, sans-serif',
         fontSize: 10,
         fontWeight: 500,
         color: colors.textMuted,
@@ -638,7 +638,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
           <h1
             style={{
-              fontFamily: '"Droid Serif", Georgia, serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 36,
               fontWeight: 400,
               color: colors.textDark,
@@ -689,7 +689,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
               <IconChevronRight size={14} color={colors.textMuted} />
             </span>
           </button>
-          <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 13, color: colors.textMuted }}>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 13, color: colors.textMuted }}>
             {notifPage}/{notifTotal}
           </span>
           <button
@@ -744,7 +744,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 4 }}>
             <h2
               style={{
-                fontFamily: '"Droid Serif", Georgia, serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 26,
                 fontWeight: 400,
                 color: colors.textDark,
@@ -818,7 +818,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                         background: 'none',
                         border: 'none',
                         cursor: 'pointer',
-                        fontFamily: 'Roboto, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontSize: 15,
                         color: colors.primary,
                         padding: '8px 12px',
@@ -884,10 +884,10 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
 
           {filteredTransactions.length === 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
-              <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 20, fontWeight: 400, color: '#60758f', letterSpacing: -0.4, margin: '0 0 4px 0' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 20, fontWeight: 400, color: '#60758f', letterSpacing: -0.4, margin: '0 0 4px 0' }}>
                 Nothing... yet.
               </p>
-              <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15, margin: 0, textAlign: 'center' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15, margin: 0, textAlign: 'center' }}>
                 No transaction matches your criteria.<br />Update filter and try again.
               </p>
             </div>

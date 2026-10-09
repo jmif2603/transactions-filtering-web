@@ -53,7 +53,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     // Input styles
     const inputStyles = [
       'flex-1 min-w-0',
-      "font-['Roboto',sans-serif] font-normal",
+      "font-['Inter',sans-serif] font-normal",
       'text-[15px] leading-[22.5px] tracking-[-0.15px]',
       'text-[#0f2b4d] placeholder:text-[#60758f]',
       'bg-transparent outline-none border-none',

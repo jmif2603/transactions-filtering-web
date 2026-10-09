@@ -103,7 +103,7 @@ const WalletTransactionListItem = ({
           >
             <p
               style={{
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 15,
                 fontWeight: 500,
                 lineHeight: '22.5px',
@@ -119,7 +119,7 @@ const WalletTransactionListItem = ({
             </p>
             <p
               style={{
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 13,
                 fontWeight: 400,
                 lineHeight: '19.5px',
@@ -144,7 +144,7 @@ const WalletTransactionListItem = ({
         >
           <p
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 15,
               fontWeight: 500,
               lineHeight: '22.5px',
@@ -157,7 +157,7 @@ const WalletTransactionListItem = ({
           </p>
           <p
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 13,
               fontWeight: 400,
               lineHeight: '19.5px',

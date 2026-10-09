@@ -44,7 +44,7 @@ const CheckboxWithLabel = ({
       />
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: '15px',
           fontWeight: 400,
           lineHeight: '22.5px',

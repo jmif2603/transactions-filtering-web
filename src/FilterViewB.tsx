@@ -77,7 +77,7 @@ function CheckboxItem({
       </span>
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontWeight: 400,
           fontSize: 15,
           lineHeight: '22.5px',
@@ -121,7 +121,7 @@ function RadioItem({
       </span>
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontWeight: 400,
           fontSize: 15,
           lineHeight: '22.5px',
@@ -167,7 +167,7 @@ function SectionHeader({
             border: 'none',
             padding: 0,
             cursor: 'pointer',
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontWeight: 500,
             fontSize: 10,
             lineHeight: '15px',
@@ -188,7 +188,7 @@ function SectionHeader({
             padding: '4px 12px',
             borderRadius: 6,
             cursor: clearDisabled ? 'default' : 'pointer',
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontWeight: 400,
             fontSize: 13,
             lineHeight: '19.5px',
@@ -534,7 +534,7 @@ export default function FilterView({
                         borderRadius: 6,
                         padding: '8px 28px',
                         cursor: 'pointer',
-                        fontFamily: 'Roboto, sans-serif',
+                        fontFamily: 'Inter, sans-serif',
                         fontWeight: 400,
                         fontSize: 15,
                         lineHeight: '21.09px',

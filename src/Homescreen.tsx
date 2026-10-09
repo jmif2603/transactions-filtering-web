@@ -30,7 +30,7 @@ const QuickActionButton = ({ icon, label, onClick }: QuickActionButtonProps) => 
       border: '1px solid #cfd6de',
       borderRadius: 6,
       cursor: 'pointer',
-      fontFamily: 'Roboto, sans-serif',
+      fontFamily: 'Inter, sans-serif',
       fontSize: 15,
       color: '#0f2b4d',
       whiteSpace: 'nowrap',
@@ -73,7 +73,7 @@ const AccountCard = ({
       {icon}
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 20,
           color: '#0f2b4d',
           letterSpacing: -0.4,
@@ -89,7 +89,7 @@ const AccountCard = ({
       <div>
         <p
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 20,
             fontWeight: 700,
             color: '#0f2b4d',
@@ -103,7 +103,7 @@ const AccountCard = ({
         {subtitle && (
           <p
             style={{
-              fontFamily: 'Roboto, sans-serif',
+              fontFamily: 'Inter, sans-serif',
               fontSize: 10,
               color: '#60758f',
               margin: '4px 0 0 0',
@@ -208,7 +208,7 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
         backgroundColor: '#f9f7f6',
         display: 'flex',
         flexDirection: 'column',
-        fontFamily: 'Roboto, sans-serif',
+        fontFamily: 'Inter, sans-serif',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -302,7 +302,7 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
           >
             <h2
               style={{
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 20,
                 fontWeight: 400,
                 color: '#0f2b4d',
@@ -435,10 +435,10 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
           {/* Empty state */}
           {filteredCleared.length === 0 && filteredPending.length === 0 && (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '16px 0' }}>
-              <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 20, fontWeight: 400, color: '#60758f', letterSpacing: -0.4, margin: '0 0 4px 0' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 20, fontWeight: 400, color: '#60758f', letterSpacing: -0.4, margin: '0 0 4px 0' }}>
                 Nothing... yet.
               </p>
-              <p style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15, margin: 0, textAlign: 'center' }}>
+              <p style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15, margin: 0, textAlign: 'center' }}>
                 No transaction matches your criteria.<br />Update filter and try again.
               </p>
             </div>
@@ -449,7 +449,7 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
             <div style={{ marginBottom: 24 }}>
               <p
                 style={{
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 10,
                   fontWeight: 500,
                   color: '#60758f',
@@ -475,7 +475,7 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
             <div>
               <p
                 style={{
-                  fontFamily: 'Roboto, sans-serif',
+                  fontFamily: 'Inter, sans-serif',
                   fontSize: 10,
                   fontWeight: 500,
                   color: '#60758f',

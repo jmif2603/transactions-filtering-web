@@ -139,12 +139,12 @@ const BottomSheetBenefits = ({
 
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', padding: '0 16px' }}>
-          <span style={{ fontFamily: 'Roboto, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15 }}>Benefit</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, color: '#b8c0ca', letterSpacing: -0.15 }}>Benefit</span>
           <button
             type="button"
             onClick={onClearSelection}
             disabled={!hasSelection}
-            style={{ background: 'none', border: 'none', padding: '4px 0', cursor: hasSelection ? 'pointer' : 'default', fontFamily: 'Roboto, sans-serif', fontSize: 13, color: hasSelection ? '#1d7883' : '#b8c0ca' }}
+            style={{ background: 'none', border: 'none', padding: '4px 0', cursor: hasSelection ? 'pointer' : 'default', fontFamily: 'Inter, sans-serif', fontSize: 13, color: hasSelection ? '#1d7883' : '#b8c0ca' }}
           >
             Clear
           </button>
@@ -193,7 +193,7 @@ const BottomSheetBenefits = ({
                 border: '2px solid #1d7883',
                 borderRadius: 6,
                 color: 'white',
-                fontFamily: 'Roboto, sans-serif',
+                fontFamily: 'Inter, sans-serif',
                 fontSize: 15,
                 fontWeight: 400,
                 lineHeight: '21px',

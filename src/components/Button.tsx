@@ -49,7 +49,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       'rounded-[6px] border-solid',
       'transition-colors duration-150',
       'focus:outline-none',
-      "font-['Roboto',sans-serif]",
+      "font-['Inter',sans-serif]",
     ];
 
     // Size styles

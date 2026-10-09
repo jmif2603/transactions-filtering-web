@@ -41,7 +41,7 @@ const RadioButtonWithLabel = ({
       />
       <span
         style={{
-          fontFamily: 'Roboto, sans-serif',
+          fontFamily: 'Inter, sans-serif',
           fontSize: 15,
           fontWeight: 400,
           lineHeight: '22.5px',

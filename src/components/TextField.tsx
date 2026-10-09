@@ -47,13 +47,13 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const labelStyles =
       variant === 'outlined'
         ? [
-            "font-['Roboto',sans-serif] font-normal",
+            "font-['Inter',sans-serif] font-normal",
             'text-[15px] leading-[22.5px]',
             'text-[#0f2b4d]',
             disabled && 'text-[#60758f]',
           ]
         : [
-            "font-['Roboto',sans-serif] font-medium",
+            "font-['Inter',sans-serif] font-medium",
             'text-[10px] leading-[15px] tracking-[0.8px] uppercase',
             'text-[#60758f]',
             disabled && 'opacity-60',
@@ -61,7 +61,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
     // Helper/error text styles
     const helperStyles = [
-      "font-['Roboto',sans-serif] font-normal",
+      "font-['Inter',sans-serif] font-normal",
       'text-[13px] leading-[19.5px]',
       error ? 'text-[#dc3545]' : 'text-[#60758f]',
     ];

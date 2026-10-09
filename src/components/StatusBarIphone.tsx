@@ -169,7 +169,7 @@ const StatusBarIphone = ({
         {/* Center: Page title */}
         <span
           style={{
-            fontFamily: 'Roboto, sans-serif',
+            fontFamily: 'Inter, sans-serif',
             fontSize: 18,
             fontWeight: 500,
             color: colors.textDark,
