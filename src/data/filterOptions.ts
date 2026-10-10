@@ -50,10 +50,10 @@ export const claimantLabel = (t: Transaction) => {
   return p?.isDependent ? `for ${p.firstName} ${p.lastName} - Dependent` : undefined;
 };
 
-/** "Frank F...1234" — the card that made the swipe. */
+/** "Card Transaction • Frank F...1234" — category plus the card that made the swipe (fd-web format). */
 export const cardLabel = (t: Transaction) => {
-  if (!t.cardId) return undefined;
+  if (t.kind !== 'CardTransaction' || !t.cardId) return undefined;
   const c = cardById(t.cardId);
   const p = c && personByUid(c.cardHolderUid);
-  return c && p ? `${p.firstName} ${p.lastName[0]}...${c.cardLast4}` : undefined;
+  return c && p ? `Card Transaction • ${p.firstName} ${p.lastName[0]}...${c.cardLast4}` : undefined;
 };

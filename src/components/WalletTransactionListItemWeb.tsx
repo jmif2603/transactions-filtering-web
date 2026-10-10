@@ -33,6 +33,8 @@ interface WalletTransactionListItemWebProps {
 const colors = {
   textDark: '#0f2b4d',
   textMuted: '#60758f',
+  moneyOut: '#c62828',
+  moneyIn: '#27a74a',
   borderLight: '#f7f3f2',
 };
 
@@ -80,7 +82,7 @@ const WalletTransactionListItemWeb = ({
               fontWeight: 500,
               lineHeight: '22.5px',
               letterSpacing: -0.3,
-              color: colors.textMuted,
+              color: type === 'Pending' ? colors.textMuted : colors.textDark,
               margin: 0,
               whiteSpace: 'nowrap',
               overflow: 'hidden',
@@ -176,7 +178,7 @@ const WalletTransactionListItemWeb = ({
               fontWeight: 500,
               lineHeight: '22.5px',
               letterSpacing: -0.15,
-              color: isMoneyOut ? colors.textDark : '#27a74a',
+              color: isMoneyOut ? colors.moneyOut : colors.moneyIn,
               margin: 0,
               whiteSpace: 'nowrap',
             }}
