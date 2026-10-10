@@ -1,3 +1,6 @@
+// BACKUP (2026-10-09): filter groups v1 — Benefit Account, Type (Money In/Out), Status (Cleared/Pending), Date Range.
+// Not imported anywhere. Kept for reference before the v2 filter groups (Transaction Type, Benefit, Date Range, Individual, Card).
+
 import { useState, useEffect, useRef } from 'react';
 import healthWalletLogoSvg from './assets/HealthWalletLogo.svg';
 import SideNav, { healthWalletNavItemsEn, healthWalletNavItemsEs } from './components/SideNav';
@@ -12,10 +15,6 @@ import RadioButtonWithLabel from './components/RadioButtonWithLabel';
 import DateRangeCustomRange from './DateRangeCustomRange';
 import { clearedTransactions, pendingTransactions } from './data/transactions';
 import type { Transaction } from './data/transactions';
-import {
-  BENEFIT_OPTIONS, TRANSACTION_TYPE_LABELS, INDIVIDUAL_LABELS, CARD_LABELS,
-  matchesTransactionType, matchesIndividual, matchesCard, claimantLabel, cardLabel,
-} from './data/filterOptions';
 
 // ============ Colors ============
 
@@ -551,12 +550,10 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
   const notifTotal = 2;
   const [benefitAccountOpen, setBenefitAccountOpen] = useState(false);
   const [benefitAccountSelected, setBenefitAccountSelected] = useState<string[]>([]);
-  const [transactionTypeOpen, setTransactionTypeOpen] = useState(false);
-  const [transactionTypeSelected, setTransactionTypeSelected] = useState<string[]>([]);
-  const [individualOpen, setIndividualOpen] = useState(false);
-  const [individualSelected, setIndividualSelected] = useState<string[]>([]);
-  const [cardOpen, setCardOpen] = useState(false);
-  const [cardSelected, setCardSelected] = useState<string[]>([]);
+  const [typeOpen, setTypeOpen] = useState(false);
+  const [typeSelected, setTypeSelected] = useState<string[]>([]);
+  const [statusOpen, setStatusOpen] = useState(false);
+  const [statusSelected, setStatusSelected] = useState<string[]>([]);
 
   const [dateOpen, setDateOpen] = useState(false);
   const [dateSelected, setDateSelected] = useState<string | null>(null);
@@ -573,10 +570,17 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
   const allTransactions = [...pendingTransactions, ...clearedTransactions];
 
   const filteredTransactions = allTransactions.filter(t => {
-    if (!matchesTransactionType(t, transactionTypeSelected)) return false;
     if (benefitAccountSelected.length > 0 && !benefitAccountSelected.includes(t.benefitAccount)) return false;
-    if (!matchesIndividual(t, individualSelected)) return false;
-    if (!matchesCard(t, cardSelected)) return false;
+
+    if (typeSelected.length > 0) {
+      const matchesType = typeSelected.some(sel =>
+        (sel === 'Money In' && t.direction === 'MoneyIn') ||
+        (sel === 'Money Out' && t.direction === 'MoneyOut')
+      );
+      if (!matchesType) return false;
+    }
+
+    if (statusSelected.length > 0 && !statusSelected.includes(t.type)) return false;
 
     if (dateSelected !== null) {
       const txDate = new Date(t.date);
@@ -713,7 +717,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
         </div>
 
         {/* Account cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
+        <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
           <AccountCard
             icon={<BenefitIconDuo icon="HSA_FSA" />}
             name="Health Savings"
@@ -732,34 +736,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
             icon={<BenefitIconDuo icon="Rewards" />}
             name="Health Rewards"
             amount="9.90"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="HRA" />}
-            name="HRA"
-            amount="1,250.00"
-            limit="2,000.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="DCFSA" />}
-            name="Dependent Care FSA"
-            amount="2,340.00"
-            limit="5,000.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="HSA_FSA" />}
-            name="General Health FSA"
-            amount="1,612.50"
-            limit="3,200.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="Remote Work" />}
-            name="Remote Work"
-            amount="340.00"
-            limit="500.00"
             subtitle="Available Balance"
           />
         </div>
@@ -781,30 +757,19 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
               Transactions
             </h2>
             {(() => {
-              const anyActive = transactionTypeSelected.length > 0 || benefitAccountSelected.length > 0 || individualSelected.length > 0 || cardSelected.length > 0 || dateSelected !== null;
+              const anyActive = benefitAccountSelected.length > 0 || typeSelected.length > 0 || statusSelected.length > 0 || dateSelected !== null;
               const clearAll = () => {
-                setTransactionTypeSelected([]);
                 setBenefitAccountSelected([]);
-                setIndividualSelected([]);
-                setCardSelected([]);
+                setTypeSelected([]);
+                setStatusSelected([]);
                 setDateSelected(null);
                 setDateCustomRange({ startDate: null, endDate: null });
               };
               const filterButtons = (
                 <>
                   <FilterDropdown
-                    label="Transaction Type"
-                    options={TRANSACTION_TYPE_LABELS}
-                    selected={transactionTypeSelected}
-                    isOpen={transactionTypeOpen}
-                    onToggle={() => setTransactionTypeOpen(o => !o)}
-                    onToggleOption={makeToggleOption(setTransactionTypeSelected)}
-                    onClearAll={makeClearAll(setTransactionTypeSelected)}
-                    onClose={() => setTransactionTypeOpen(false)}
-                  />
-                  <FilterDropdown
                     label="Benefit Account"
-                    options={BENEFIT_OPTIONS}
+                    options={['Health Savings', 'HRA', 'Dependent Care FSA', 'General Health FSA', 'Remote Work']}
                     selected={benefitAccountSelected}
                     isOpen={benefitAccountOpen}
                     onToggle={() => setBenefitAccountOpen(o => !o)}
@@ -813,24 +778,24 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     onClose={() => setBenefitAccountOpen(false)}
                   />
                   <FilterDropdown
-                    label="Individual"
-                    options={INDIVIDUAL_LABELS}
-                    selected={individualSelected}
-                    isOpen={individualOpen}
-                    onToggle={() => setIndividualOpen(o => !o)}
-                    onToggleOption={makeToggleOption(setIndividualSelected)}
-                    onClearAll={makeClearAll(setIndividualSelected)}
-                    onClose={() => setIndividualOpen(false)}
+                    label="Type"
+                    options={['Money In', 'Money Out']}
+                    selected={typeSelected}
+                    isOpen={typeOpen}
+                    onToggle={() => setTypeOpen(o => !o)}
+                    onToggleOption={makeToggleOption(setTypeSelected)}
+                    onClearAll={makeClearAll(setTypeSelected)}
+                    onClose={() => setTypeOpen(false)}
                   />
                   <FilterDropdown
-                    label="Card"
-                    options={CARD_LABELS}
-                    selected={cardSelected}
-                    isOpen={cardOpen}
-                    onToggle={() => setCardOpen(o => !o)}
-                    onToggleOption={makeToggleOption(setCardSelected)}
-                    onClearAll={makeClearAll(setCardSelected)}
-                    onClose={() => setCardOpen(false)}
+                    label="Status"
+                    options={['Cleared', 'Pending']}
+                    selected={statusSelected}
+                    isOpen={statusOpen}
+                    onToggle={() => setStatusOpen(o => !o)}
+                    onToggleOption={makeToggleOption(setStatusSelected)}
+                    onClearAll={makeClearAll(setStatusSelected)}
+                    onClose={() => setStatusOpen(false)}
                   />
                   <TransactionDateFilter
                     selected={dateSelected}
@@ -892,7 +857,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     benefit={toBenefit(t.benefit)}
                     isMoneyOut={t.direction === 'MoneyOut'}
                     hasBottomDivider={i < filteredPending.length - 1}
-                    secondaryLabel={claimantLabel(t) ?? cardLabel(t)}
                   />
                 ))}
               </div>
@@ -915,7 +879,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     benefit={toBenefit(t.benefit)}
                     isMoneyOut={t.direction === 'MoneyOut'}
                     hasBottomDivider={i < filteredCleared.length - 1}
-                    secondaryLabel={claimantLabel(t) ?? cardLabel(t)}
                   />
                 ))}
               </div>

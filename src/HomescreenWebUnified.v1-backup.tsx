@@ -1,20 +1,19 @@
+// BACKUP (2026-10-09): filter groups v1 — Benefit Account, Type (Money In/Out), Status (Cleared/Pending), Date Range.
+// Not imported anywhere. Kept for reference before the v2 filter groups (Transaction Type, Benefit, Date Range, Individual, Card).
+
 import { useState, useRef, useEffect } from 'react';
 import healthWalletLogoSvg from './assets/HealthWalletLogo.svg';
 import SideNav, { healthWalletNavItemsEn, healthWalletNavItemsEs } from './components/SideNav';
 import WalletTransactionListItemWeb from './components/WalletTransactionListItemWeb';
 import Button from './components/Button';
 import BenefitIconDuo from './components/BenefitIconDuo';
-import { IconArrowRight, IconChevronRight, IconPlus, IconHelpCircle, IconFilter, IconCalendar } from './components/icons';
+import { IconArrowRight, IconChevronRight, IconPlus, IconHelpCircle, IconFilter, IconCalendar, IconLogIn, IconLogOut, IconCheckCircle, IconWaiting } from './components/icons';
 import Input from './components/Input';
 import Chip from './components/Chip';
 import DateRangeCustomRange from './DateRangeCustomRange';
 import CommsIcon from './components/commsIcon';
 import { clearedTransactions, pendingTransactions } from './data/transactions';
 import type { Transaction } from './data/transactions';
-import {
-  BENEFIT_OPTIONS, TRANSACTION_TYPE_LABELS, INDIVIDUAL_LABELS, CARD_LABELS,
-  matchesTransactionType, matchesIndividual, matchesCard, claimantLabel, cardLabel,
-} from './data/filterOptions';
 
 // ============ Colors ============
 
@@ -213,7 +212,20 @@ const formatDateRange = (start: Date, end: Date): string => {
   return `${startStr} – ${endStr}`;
 };
 
+const BENEFIT_OPTIONS = ['Health Savings', 'HRA', 'Dependent Care FSA', 'General Health FSA', 'Remote Work'];
+const TYPE_OPTIONS = ['Money In', 'Money Out'];
+const STATUS_OPTIONS = ['Cleared', 'Pending'];
 const DATE_RANGE_OPTIONS = ['Last 24 Hours', 'Last 3 days', 'Last 7 days', 'Last 14 days', 'Last 30 days'];
+
+const typeIcons: Record<string, React.ReactNode> = {
+  'Money In': <IconLogIn size={16} />,
+  'Money Out': <IconLogOut size={16} />,
+};
+
+const statusIcons: Record<string, React.ReactNode> = {
+  'Cleared': <IconCheckCircle size={16} />,
+  'Pending': <IconWaiting size={16} />,
+};
 
 interface FilterSectionProps {
   title: string;
@@ -256,7 +268,7 @@ const FilterSection = ({ title, options, selected, onToggle, onSelectAll, onClea
         {selected.length > 0 && (
           <>
             <div style={{ width: 0.5, backgroundColor: colors.borderDark, alignSelf: 'stretch' }} />
-            <button onClick={onClearAll} style={filterActionBtnStyle}>Clear</button>
+            <button onClick={onClearAll} style={filterActionBtnStyle}>Clear All</button>
           </>
         )}
       </div>
@@ -287,12 +299,10 @@ interface CustomDateRange {
 interface FilterPanelProps {
   selectedBenefits: string[];
   setSelectedBenefits: (v: string[]) => void;
-  selectedTransactionTypes: string[];
-  setSelectedTransactionTypes: (v: string[]) => void;
-  selectedIndividuals: string[];
-  setSelectedIndividuals: (v: string[]) => void;
-  selectedCards: string[];
-  setSelectedCards: (v: string[]) => void;
+  selectedTypes: string[];
+  setSelectedTypes: (v: string[]) => void;
+  selectedStatuses: string[];
+  setSelectedStatuses: (v: string[]) => void;
   selectedDateRange: string | null;
   setSelectedDateRange: (v: string | null) => void;
   customDateRange: CustomDateRange;
@@ -301,9 +311,8 @@ interface FilterPanelProps {
 
 const FilterPanel = ({
   selectedBenefits, setSelectedBenefits,
-  selectedTransactionTypes, setSelectedTransactionTypes,
-  selectedIndividuals, setSelectedIndividuals,
-  selectedCards, setSelectedCards,
+  selectedTypes, setSelectedTypes,
+  selectedStatuses, setSelectedStatuses,
   selectedDateRange, setSelectedDateRange,
   customDateRange, setCustomDateRange,
 }: FilterPanelProps) => {
@@ -339,14 +348,6 @@ const FilterPanel = ({
       }}
     >
       <FilterSection
-        title="Transaction Type"
-        options={TRANSACTION_TYPE_LABELS}
-        selected={selectedTransactionTypes}
-        onToggle={opt => toggle(selectedTransactionTypes, opt, setSelectedTransactionTypes)}
-        onSelectAll={() => setSelectedTransactionTypes(selectedTransactionTypes.length === TRANSACTION_TYPE_LABELS.length ? [] : [...TRANSACTION_TYPE_LABELS])}
-        onClearAll={() => setSelectedTransactionTypes([])}
-      />
-      <FilterSection
         title="Benefit Account"
         options={BENEFIT_OPTIONS}
         selected={selectedBenefits}
@@ -355,20 +356,22 @@ const FilterPanel = ({
         onClearAll={() => setSelectedBenefits([])}
       />
       <FilterSection
-        title="Individual"
-        options={INDIVIDUAL_LABELS}
-        selected={selectedIndividuals}
-        onToggle={opt => toggle(selectedIndividuals, opt, setSelectedIndividuals)}
-        onSelectAll={() => setSelectedIndividuals(selectedIndividuals.length === INDIVIDUAL_LABELS.length ? [] : [...INDIVIDUAL_LABELS])}
-        onClearAll={() => setSelectedIndividuals([])}
+        title="Type"
+        options={TYPE_OPTIONS}
+        selected={selectedTypes}
+        onToggle={opt => toggle(selectedTypes, opt, setSelectedTypes)}
+        onSelectAll={() => setSelectedTypes(selectedTypes.length === TYPE_OPTIONS.length ? [] : [...TYPE_OPTIONS])}
+        onClearAll={() => setSelectedTypes([])}
+        icons={typeIcons}
       />
       <FilterSection
-        title="Card"
-        options={CARD_LABELS}
-        selected={selectedCards}
-        onToggle={opt => toggle(selectedCards, opt, setSelectedCards)}
-        onSelectAll={() => setSelectedCards(selectedCards.length === CARD_LABELS.length ? [] : [...CARD_LABELS])}
-        onClearAll={() => setSelectedCards([])}
+        title="Status"
+        options={STATUS_OPTIONS}
+        selected={selectedStatuses}
+        onToggle={opt => toggle(selectedStatuses, opt, setSelectedStatuses)}
+        onSelectAll={() => setSelectedStatuses(selectedStatuses.length === STATUS_OPTIONS.length ? [] : [...STATUS_OPTIONS])}
+        onClearAll={() => setSelectedStatuses([])}
+        icons={statusIcons}
       />
 
       {/* Date Range — no bottom border, no Select All */}
@@ -464,9 +467,8 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
   const [notifPage, setNotifPage] = useState(1);
   const [filterPanelOpen, setFilterPanelOpen] = useState(false);
   const [selectedBenefits, setSelectedBenefits] = useState<string[]>([]);
-  const [selectedTransactionTypes, setSelectedTransactionTypes] = useState<string[]>([]);
-  const [selectedIndividuals, setSelectedIndividuals] = useState<string[]>([]);
-  const [selectedCards, setSelectedCards] = useState<string[]>([]);
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
   const [selectedDateRange, setSelectedDateRange] = useState<string | null>(null);
   const [customDateRange, setCustomDateRange] = useState<CustomDateRange>({ startDate: null, endDate: null });
   const filterRef = useRef<HTMLDivElement>(null);
@@ -490,10 +492,15 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
     'Last 30 days': 30,
   };
   const filteredTransactions = allTransactions.filter(t => {
-    if (!matchesTransactionType(t, selectedTransactionTypes)) return false;
     if (selectedBenefits.length > 0 && !selectedBenefits.includes(t.benefitAccount)) return false;
-    if (!matchesIndividual(t, selectedIndividuals)) return false;
-    if (!matchesCard(t, selectedCards)) return false;
+    if (selectedTypes.length > 0) {
+      const matches = selectedTypes.some(s =>
+        (s === 'Money In' && t.direction === 'MoneyIn') ||
+        (s === 'Money Out' && t.direction === 'MoneyOut')
+      );
+      if (!matches) return false;
+    }
+    if (selectedStatuses.length > 0 && !selectedStatuses.includes(t.type)) return false;
     if (selectedDateRange !== null) {
       const days = dateRangeDaysMap[selectedDateRange];
       if (days !== undefined) {
@@ -619,7 +626,7 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
         </div>
 
         {/* Account cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
+        <div style={{ display: 'flex', gap: 16, marginBottom: 32 }}>
           <AccountCard
             icon={<BenefitIconDuo icon="HSA_FSA" />}
             name="Health Savings"
@@ -638,34 +645,6 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
             icon={<BenefitIconDuo icon="Rewards" />}
             name="Health Rewards"
             amount="9.90"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="HRA" />}
-            name="HRA"
-            amount="1,250.00"
-            limit="2,000.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="DCFSA" />}
-            name="Dependent Care FSA"
-            amount="2,340.00"
-            limit="5,000.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="HSA_FSA" />}
-            name="General Health FSA"
-            amount="1,612.50"
-            limit="3,200.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
-            icon={<BenefitIconDuo icon="Remote Work" />}
-            name="Remote Work"
-            amount="340.00"
-            limit="500.00"
             subtitle="Available Balance"
           />
         </div>
@@ -689,17 +668,15 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
             <div ref={filterRef} style={{ position: 'relative' }}>
               {(() => {
                 const totalSelected =
-                  selectedTransactionTypes.length +
                   selectedBenefits.length +
-                  selectedIndividuals.length +
-                  selectedCards.length +
+                  selectedTypes.length +
+                  selectedStatuses.length +
                   (selectedDateRange ? 1 : 0) +
                   (customDateRange.startDate ? 1 : 0);
                 const clearAll = () => {
-                  setSelectedTransactionTypes([]);
                   setSelectedBenefits([]);
-                  setSelectedIndividuals([]);
-                  setSelectedCards([]);
+                  setSelectedTypes([]);
+                  setSelectedStatuses([]);
                   setSelectedDateRange(null);
                   setCustomDateRange({ startDate: null, endDate: null });
                 };
@@ -775,12 +752,10 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
                 <FilterPanel
                   selectedBenefits={selectedBenefits}
                   setSelectedBenefits={setSelectedBenefits}
-                  selectedTransactionTypes={selectedTransactionTypes}
-                  setSelectedTransactionTypes={setSelectedTransactionTypes}
-                  selectedIndividuals={selectedIndividuals}
-                  setSelectedIndividuals={setSelectedIndividuals}
-                  selectedCards={selectedCards}
-                  setSelectedCards={setSelectedCards}
+                  selectedTypes={selectedTypes}
+                  setSelectedTypes={setSelectedTypes}
+                  selectedStatuses={selectedStatuses}
+                  setSelectedStatuses={setSelectedStatuses}
                   selectedDateRange={selectedDateRange}
                   setSelectedDateRange={setSelectedDateRange}
                   customDateRange={customDateRange}
@@ -806,7 +781,6 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
                     benefit={toBenefit(t.benefit)}
                     isMoneyOut={t.direction === 'MoneyOut'}
                     hasBottomDivider={i < filteredPending.length - 1}
-                    secondaryLabel={claimantLabel(t) ?? cardLabel(t)}
                   />
                 ))}
               </div>
@@ -829,7 +803,6 @@ const HomescreenWebUnified = ({ userName = 'Frank' }: HomescreenWebUnifiedProps)
                     benefit={toBenefit(t.benefit)}
                     isMoneyOut={t.direction === 'MoneyOut'}
                     hasBottomDivider={i < filteredCleared.length - 1}
-                    secondaryLabel={claimantLabel(t) ?? cardLabel(t)}
                   />
                 ))}
               </div>

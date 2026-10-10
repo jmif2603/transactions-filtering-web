@@ -231,12 +231,8 @@ const DEFAULT_BENEFIT_SELECTIONS: BenefitSelections = {
   healthSavings: false,
   hra: false,
   dcfsa: false,
-  lpfsa: false,
+  ghfsa: false,
   remoteWork: false,
-  transit: false,
-  lsa: false,
-  parking: false,
-  rewards: false,
 };
 
 export interface FilterState {
@@ -260,13 +256,9 @@ const DATE_OPTIONS: { key: Exclude<DateRangeOption, 'custom' | null>; label: str
 const BENEFIT_ITEMS: { key: BenefitKey; label: string }[] = [
   { key: 'healthSavings', label: 'Health Savings' },
   { key: 'hra', label: 'HRA' },
-  { key: 'dcfsa', label: 'DCFSA' },
-  { key: 'lpfsa', label: 'LPFSA' },
+  { key: 'dcfsa', label: 'Dependent Care FSA' },
+  { key: 'ghfsa', label: 'General Health FSA' },
   { key: 'remoteWork', label: 'Remote Work' },
-  { key: 'transit', label: 'Transit' },
-  { key: 'lsa', label: 'LSA' },
-  { key: 'parking', label: 'Parking' },
-  { key: 'rewards', label: 'Rewards' },
 ];
 
 // ── Main component ───────────────────────────────────────────────────────────

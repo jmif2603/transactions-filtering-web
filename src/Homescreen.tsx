@@ -349,9 +349,8 @@ const Homescreen = ({ FilterView = DefaultFilterView, filterChipVariant = 'A' }:
           {/* Active filter chips */}
           {hasActiveFilters && appliedFilters && (() => {
             const benefitLabels: Record<string, string> = {
-              healthSavings: 'Health Savings', hra: 'HRA', dcfsa: 'DCFSA',
-              lpfsa: 'LPFSA', remoteWork: 'Remote Work', transit: 'Transit',
-              lsa: 'LSA', parking: 'Parking', rewards: 'Rewards',
+              healthSavings: 'Health Savings', hra: 'HRA', dcfsa: 'Dependent Care FSA',
+              ghfsa: 'General Health FSA', remoteWork: 'Remote Work',
             };
             const selectedBenefits = Object.entries(appliedFilters.benefitSelections)
               .filter(([, v]) => v).map(([k]) => benefitLabels[k]);

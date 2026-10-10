@@ -38,12 +38,8 @@ export const DEFAULT_BENEFIT_SELECTIONS: BenefitSelections = {
   healthSavings: false,
   hra: false,
   dcfsa: false,
-  lpfsa: false,
+  ghfsa: false,
   remoteWork: false,
-  transit: false,
-  lsa: false,
-  parking: false,
-  rewards: false,
 };
 
 export interface FilterState {
@@ -88,13 +84,9 @@ export default function FilterView({
         const labels: Record<string, string> = {
           healthSavings: 'Health Savings',
           hra: 'HRA',
-          dcfsa: 'DCFSA',
-          lpfsa: 'LPFSA',
+          dcfsa: 'Dependent Care FSA',
+          ghfsa: 'General Health FSA',
           remoteWork: 'Remote Work',
-          transit: 'Transit',
-          lsa: 'LSA',
-          parking: 'Parking',
-          rewards: 'Rewards',
         };
         return labels[key];
       });

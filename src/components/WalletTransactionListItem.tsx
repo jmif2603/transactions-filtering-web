@@ -2,6 +2,7 @@ import BenefitTransactionIcon from './BenefitIconTransactionItem';
 
 type BenefitType =
   | 'HSA_FSA'
+  | 'GHFSA'
   | 'HRA'
   | 'DCFSA'
   | 'LPFSA'

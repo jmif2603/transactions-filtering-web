@@ -4,23 +4,15 @@ export type BenefitKey =
   | 'healthSavings'
   | 'hra'
   | 'dcfsa'
-  | 'lpfsa'
-  | 'remoteWork'
-  | 'transit'
-  | 'lsa'
-  | 'parking'
-  | 'rewards';
+  | 'ghfsa'
+  | 'remoteWork';
 
 export interface BenefitSelections {
   healthSavings: boolean;
   hra: boolean;
   dcfsa: boolean;
-  lpfsa: boolean;
+  ghfsa: boolean;
   remoteWork: boolean;
-  transit: boolean;
-  lsa: boolean;
-  parking: boolean;
-  rewards: boolean;
 }
 
 export interface BottomSheetBenefitsProps {
@@ -39,25 +31,17 @@ export interface BottomSheetBenefitsProps {
 const BENEFIT_OPTIONS: { key: BenefitKey; label: string }[] = [
   { key: 'healthSavings', label: 'Health Savings' },
   { key: 'hra', label: 'HRA' },
-  { key: 'dcfsa', label: 'DCFSA' },
-  { key: 'lpfsa', label: 'LPFSA' },
+  { key: 'dcfsa', label: 'Dependent Care FSA' },
+  { key: 'ghfsa', label: 'General Health FSA' },
   { key: 'remoteWork', label: 'Remote Work' },
-  { key: 'transit', label: 'Transit' },
-  { key: 'lsa', label: 'LSA' },
-  { key: 'parking', label: 'Parking' },
-  { key: 'rewards', label: 'Rewards' },
 ];
 
 const DEFAULT_SELECTIONS: BenefitSelections = {
   healthSavings: false,
   hra: false,
   dcfsa: false,
-  lpfsa: false,
+  ghfsa: false,
   remoteWork: false,
-  transit: false,
-  lsa: false,
-  parking: false,
-  rewards: false,
 };
 
 const BottomSheetBenefits = ({

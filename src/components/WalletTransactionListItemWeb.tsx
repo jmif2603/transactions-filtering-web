@@ -3,6 +3,7 @@ import { IconChevronRight } from './icons';
 
 type BenefitType =
   | 'HSA_FSA'
+  | 'GHFSA'
   | 'HRA'
   | 'DCFSA'
   | 'LPFSA'
@@ -25,6 +26,8 @@ interface WalletTransactionListItemWebProps {
   benefit?: BenefitType;
   hasBottomDivider?: boolean;
   isMoneyOut?: boolean;
+  /** Secondary line under the merchant name, e.g. "for Sherry Ford - Dependent" or "Frank F...1234" */
+  secondaryLabel?: string;
 }
 
 const colors = {
@@ -42,6 +45,7 @@ const WalletTransactionListItemWeb = ({
   benefit = 'HSA_FSA',
   hasBottomDivider = true,
   isMoneyOut = true,
+  secondaryLabel,
 }: WalletTransactionListItemWebProps) => {
   const iconType = type === 'Pending' ? ('Pending' as const) : type;
 
@@ -68,22 +72,41 @@ const WalletTransactionListItemWeb = ({
         }}
       >
         <BenefitTransactionIcon benefit={benefit} type={iconType} />
-        <p
-          style={{
-            fontFamily: 'Inter, sans-serif',
-            fontSize: 15,
-            fontWeight: 500,
-            lineHeight: '22.5px',
-            letterSpacing: -0.3,
-            color: colors.textMuted,
-            margin: 0,
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {merchantName}
-        </p>
+        <div style={{ minWidth: 0 }}>
+          <p
+            style={{
+              fontFamily: 'Inter, sans-serif',
+              fontSize: 15,
+              fontWeight: 500,
+              lineHeight: '22.5px',
+              letterSpacing: -0.3,
+              color: colors.textMuted,
+              margin: 0,
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+            }}
+          >
+            {merchantName}
+          </p>
+          {secondaryLabel && (
+            <p
+              style={{
+                fontFamily: 'Inter, sans-serif',
+                fontSize: 13,
+                fontWeight: 400,
+                lineHeight: '19.5px',
+                color: colors.textMuted,
+                margin: 0,
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
+            >
+              {secondaryLabel}
+            </p>
+          )}
+        </div>
       </div>
 
       {/* Date */}

@@ -4,8 +4,7 @@ import { DEFAULT_BENEFIT_SELECTIONS } from '../FilterViewA';
 import type { FilterState } from '../FilterViewA';
 
 const benefitKeyToType: Record<string, string> = {
-  healthSavings: 'HSA_FSA', hra: 'HRA', dcfsa: 'DCFSA', lpfsa: 'LPFSA',
-  remoteWork: 'RemoteWork', transit: 'Transit', lsa: 'LSA', parking: 'Parking', rewards: 'Rewards',
+  healthSavings: 'HSA_FSA', hra: 'HRA', dcfsa: 'DCFSA', ghfsa: 'GHFSA', remoteWork: 'RemoteWork',
 };
 
 export function useTransactionFilters() {
