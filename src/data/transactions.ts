@@ -7,7 +7,7 @@ export interface Transaction {
   date: string;
   type: 'Cleared' | 'Pending';
   direction: 'MoneyIn' | 'MoneyOut';
-  benefit: 'HSA_FSA' | 'HRA' | 'DCFSA' | 'GHFSA' | 'RemoteWork';
+  benefit: 'HSA_FSA' | 'DCFSA' | 'GHFSA' | 'RemoteWork';
   status?: 'ReceiptRequired' | 'Denied' | 'ApprovalPending' | 'InformationRequested' | 'AutoApproved' | 'Approved' | 'Paid' | 'PaymentPending';
   isCardSwipe?: boolean;
   claimStatus?: 'PENDING' | 'IN_REVIEW' | 'INFORMATION_REQUESTED' | 'RESUBMITTED' | 'APPROVED' | 'PAID' | 'IN_ACCRUAL' | 'REJECTED' | 'CANCELLED';
@@ -26,9 +26,8 @@ export interface Transaction {
 
 export type TransactionKind = 'CardTransaction' | 'ClaimReimbursement' | 'Contribution' | 'Deposit';
 
-// Benefit accounts in this prototype (5):
+// Benefit accounts in this prototype (4):
 //   HSA_FSA    → 'Health Savings'
-//   HRA        → 'HRA'
 //   DCFSA      → 'Dependent Care FSA'
 //   GHFSA      → 'General Health FSA'
 //   RemoteWork → 'Remote Work'
@@ -114,37 +113,36 @@ export const clearedTransactions: Transaction[] = [
     claimantUid: 'frank',
   },
 
-  // ── HRA ──
   {
-    merchantName: 'Employer HRA Contribution',
-    benefitAccount: 'HRA',
+    merchantName: 'Employer Contribution',
+    benefitAccount: 'General Health FSA',
     transactionAmount: '25.00',
     date: 'Mar 05, 2025',
     type: 'Cleared',
     direction: 'MoneyIn',
-    benefit: 'HRA',
+    benefit: 'GHFSA',
     kind: 'Contribution',
   },
   {
     merchantName: 'Whole Foods Market',
-    benefitAccount: 'HRA',
+    benefitAccount: 'General Health FSA',
     transactionAmount: '124.00',
     date: 'Oct 08, 2025',
     type: 'Cleared',
     direction: 'MoneyOut',
-    benefit: 'HRA',
+    benefit: 'GHFSA',
     claimStatus: 'REJECTED',
     kind: 'ClaimReimbursement',
     claimantUid: 'frank',
   },
   {
     merchantName: 'Costco',
-    benefitAccount: 'HRA',
+    benefitAccount: 'General Health FSA',
     transactionAmount: '99.99',
     date: 'Apr 17, 2026',
     type: 'Cleared',
     direction: 'MoneyOut',
-    benefit: 'HRA',
+    benefit: 'GHFSA',
     status: 'Denied',
     isCardSwipe: true,
     kind: 'CardTransaction',
@@ -152,37 +150,36 @@ export const clearedTransactions: Transaction[] = [
   },
   {
     merchantName: 'Kroger Pharmacy',
-    benefitAccount: 'HRA',
+    benefitAccount: 'Health Savings',
     transactionAmount: '52.30',
     date: 'Dec 05, 2025',
     type: 'Cleared',
     direction: 'MoneyOut',
-    benefit: 'HRA',
-    status: 'Paid',
+    benefit: 'HSA_FSA',
     isCardSwipe: true,
     kind: 'CardTransaction',
     cardId: 'card-frank-1234',
   },
   {
     merchantName: 'City Medical Center',
-    benefitAccount: 'HRA',
+    benefitAccount: 'Health Savings',
     transactionAmount: '320.00',
     date: 'Oct 18, 2025',
     type: 'Cleared',
     direction: 'MoneyOut',
-    benefit: 'HRA',
+    benefit: 'HSA_FSA',
     claimStatus: 'IN_REVIEW',
     kind: 'ClaimReimbursement',
     claimantUid: 'frank',
   },
   {
     merchantName: 'Summit Chiropractic',
-    benefitAccount: 'HRA',
+    benefitAccount: 'General Health FSA',
     transactionAmount: '85.00',
     date: 'May 19, 2026',
     type: 'Cleared',
     direction: 'MoneyIn',
-    benefit: 'HRA',
+    benefit: 'GHFSA',
     claimStatus: 'IN_ACCRUAL',
     kind: 'ClaimReimbursement',
     claimantUid: 'frank',
@@ -487,12 +484,12 @@ export const pendingTransactions: Transaction[] = [
   },
   {
     merchantName: 'Dermatology Associates',
-    benefitAccount: 'HRA',
+    benefitAccount: 'General Health FSA',
     transactionAmount: '422.55',
     date: 'Mar 02, 2025',
     type: 'Pending',
     direction: 'MoneyOut',
-    benefit: 'HRA',
+    benefit: 'GHFSA',
     claimStatus: 'PENDING',
     kind: 'ClaimReimbursement',
     claimantUid: 'sherry',

@@ -735,13 +735,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
             subtitle="Available Balance"
           />
           <AccountCard
-            icon={<BenefitIconDuo icon="HRA" />}
-            name="HRA"
-            amount="1,250.00"
-            limit="2,000.00"
-            subtitle="Available Balance"
-          />
-          <AccountCard
             icon={<BenefitIconDuo icon="DCFSA" />}
             name="Dependent Care FSA"
             amount="2,340.00"

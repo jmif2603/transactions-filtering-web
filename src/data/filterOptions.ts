@@ -4,7 +4,7 @@ import type { Transaction, TransactionKind } from './transactions';
 // ── Filter groups (v2) ──────────────────────────────────────────────────────
 // 1. Transaction Type  2. Benefit Account  3. Date Range  4. Individual  5. Card
 
-export const BENEFIT_OPTIONS = ['Health Savings', 'HRA', 'Dependent Care FSA', 'General Health FSA', 'Remote Work'];
+export const BENEFIT_OPTIONS = ['Health Savings', 'Dependent Care FSA', 'General Health FSA', 'Remote Work'];
 
 export const TRANSACTION_TYPE_OPTIONS: { label: string; kind: TransactionKind }[] = [
   { label: 'Card Transaction', kind: 'CardTransaction' },
