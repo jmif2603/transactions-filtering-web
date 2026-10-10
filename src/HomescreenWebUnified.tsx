@@ -347,32 +347,15 @@ const FilterPanel = ({
         onClearAll={() => setSelectedTransactionTypes([])}
       />
       <FilterSection
-        title="Benefit Account"
+        title="Benefit Type"
         options={BENEFIT_OPTIONS}
         selected={selectedBenefits}
         onToggle={opt => toggle(selectedBenefits, opt, setSelectedBenefits)}
         onSelectAll={() => setSelectedBenefits(selectedBenefits.length === BENEFIT_OPTIONS.length ? [] : [...BENEFIT_OPTIONS])}
         onClearAll={() => setSelectedBenefits([])}
       />
-      <FilterSection
-        title="Individual"
-        options={INDIVIDUAL_LABELS}
-        selected={selectedIndividuals}
-        onToggle={opt => toggle(selectedIndividuals, opt, setSelectedIndividuals)}
-        onSelectAll={() => setSelectedIndividuals(selectedIndividuals.length === INDIVIDUAL_LABELS.length ? [] : [...INDIVIDUAL_LABELS])}
-        onClearAll={() => setSelectedIndividuals([])}
-      />
-      <FilterSection
-        title="Card"
-        options={CARD_LABELS}
-        selected={selectedCards}
-        onToggle={opt => toggle(selectedCards, opt, setSelectedCards)}
-        onSelectAll={() => setSelectedCards(selectedCards.length === CARD_LABELS.length ? [] : [...CARD_LABELS])}
-        onClearAll={() => setSelectedCards([])}
-      />
-
-      {/* Date Range — no bottom border, no Select All */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingBottom: 8 }}>
+      {/* Date Range — no Select All */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 8, paddingBottom: 16, borderBottom: '1px solid #f7f3f2' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 8, paddingLeft: 8, minHeight: 36, boxSizing: 'border-box' }}>
           <span style={{ fontFamily: 'Inter, sans-serif', fontSize: 15, fontWeight: 500, color: colors.textDark, letterSpacing: '-0.15px' }}>
             Date Range
@@ -410,6 +393,24 @@ const FilterPanel = ({
           />
         </div>
       </div>
+
+      <FilterSection
+        title="Individual"
+        options={INDIVIDUAL_LABELS}
+        selected={selectedIndividuals}
+        onToggle={opt => toggle(selectedIndividuals, opt, setSelectedIndividuals)}
+        onSelectAll={() => setSelectedIndividuals(selectedIndividuals.length === INDIVIDUAL_LABELS.length ? [] : [...INDIVIDUAL_LABELS])}
+        onClearAll={() => setSelectedIndividuals([])}
+      />
+      <FilterSection
+        title="Card"
+        options={CARD_LABELS}
+        selected={selectedCards}
+        onToggle={opt => toggle(selectedCards, opt, setSelectedCards)}
+        onSelectAll={() => setSelectedCards(selectedCards.length === CARD_LABELS.length ? [] : [...CARD_LABELS])}
+        onClearAll={() => setSelectedCards([])}
+        borderBottom={false}
+      />
 
       {/* Date picker — floats to the left of the panel */}
       {showDatePicker && (

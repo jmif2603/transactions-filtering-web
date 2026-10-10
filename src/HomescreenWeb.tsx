@@ -796,7 +796,7 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     onClose={() => setTransactionTypeOpen(false)}
                   />
                   <FilterDropdown
-                    label="Benefit Account"
+                    label="Benefit Type"
                     options={BENEFIT_OPTIONS}
                     selected={benefitAccountSelected}
                     isOpen={benefitAccountOpen}
@@ -804,6 +804,19 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     onToggleOption={makeToggleOption(setBenefitAccountSelected)}
                     onClearAll={makeClearAll(setBenefitAccountSelected)}
                     onClose={() => setBenefitAccountOpen(false)}
+                  />
+                  <TransactionDateFilter
+                    selected={dateSelected}
+                    savedCustomRange={dateCustomRange}
+                    isOpen={dateOpen}
+                    onToggle={() => setDateOpen(o => !o)}
+                    onSelect={(key) => { setDateSelected(key); }}
+                    onSelectCustomRange={(startDate, endDate) => {
+                      setDateCustomRange({ startDate, endDate });
+                      setDateSelected('custom');
+                    }}
+                    onClearAll={() => { setDateSelected(null); setDateCustomRange({ startDate: null, endDate: null }); }}
+                    onClose={() => setDateOpen(false)}
                   />
                   <FilterDropdown
                     label="Individual"
@@ -824,19 +837,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
                     onToggleOption={makeToggleOption(setCardSelected)}
                     onClearAll={makeClearAll(setCardSelected)}
                     onClose={() => setCardOpen(false)}
-                  />
-                  <TransactionDateFilter
-                    selected={dateSelected}
-                    savedCustomRange={dateCustomRange}
-                    isOpen={dateOpen}
-                    onToggle={() => setDateOpen(o => !o)}
-                    onSelect={(key) => { setDateSelected(key); }}
-                    onSelectCustomRange={(startDate, endDate) => {
-                      setDateCustomRange({ startDate, endDate });
-                      setDateSelected('custom');
-                    }}
-                    onClearAll={() => { setDateSelected(null); setDateCustomRange({ startDate: null, endDate: null }); }}
-                    onClose={() => setDateOpen(false)}
                   />
                 </>
               );
