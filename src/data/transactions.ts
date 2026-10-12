@@ -7,7 +7,7 @@ export interface Transaction {
   date: string;
   type: 'Cleared' | 'Pending';
   direction: 'MoneyIn' | 'MoneyOut';
-  benefit: 'HSA_FSA' | 'DCFSA' | 'GHFSA' | 'RemoteWork';
+  benefit: 'DCFSA' | 'GHFSA' | 'RemoteWork';
   status?: 'ReceiptRequired' | 'Denied' | 'ApprovalPending' | 'InformationRequested' | 'AutoApproved' | 'Approved' | 'Paid' | 'PaymentPending';
   isCardSwipe?: boolean;
   claimStatus?: 'PENDING' | 'IN_REVIEW' | 'INFORMATION_REQUESTED' | 'RESUBMITTED' | 'APPROVED' | 'PAID' | 'IN_ACCRUAL' | 'REJECTED' | 'CANCELLED';
@@ -26,93 +26,12 @@ export interface Transaction {
 
 export type TransactionKind = 'CardTransaction' | 'ClaimReimbursement' | 'Contribution' | 'Deposit';
 
-// Benefit accounts in this prototype (4):
-//   HSA_FSA    → 'Health Savings'
+// Benefit accounts in this prototype (3):
 //   DCFSA      → 'Dependent Care FSA'
 //   GHFSA      → 'General Health FSA'
 //   RemoteWork → 'Remote Work'
 
 export const clearedTransactions: Transaction[] = [
-  // ── Health Savings ──
-  {
-    merchantName: 'CVS 09447',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '43.30',
-    date: 'Oct 22, 2025',
-    type: 'Pending',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    isCardSwipe: true,
-    kind: 'CardTransaction',
-    cardId: 'card-frank-1234',
-  },
-  {
-    merchantName: 'Employee Payroll Contribution',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '200.00',
-    date: 'Sep 14, 2026',
-    type: 'Cleared',
-    direction: 'MoneyIn',
-    benefit: 'HSA_FSA',
-    kind: 'Contribution',
-  },
-  {
-    merchantName: 'Wellness Program Reward',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '20.00',
-    date: 'Jan 30, 2025',
-    type: 'Cleared',
-    direction: 'MoneyIn',
-    benefit: 'HSA_FSA',
-    kind: 'Deposit',
-  },
-  {
-    merchantName: 'Employer Funding',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '500.00',
-    date: 'Jul 01, 2026',
-    type: 'Cleared',
-    direction: 'MoneyIn',
-    benefit: 'HSA_FSA',
-    kind: 'Contribution',
-  },
-  {
-    merchantName: 'Dr. Sarah Chen, MD',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '150.00',
-    date: 'Nov 05, 2025',
-    type: 'Cleared',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    claimStatus: 'PENDING',
-    kind: 'ClaimReimbursement',
-    claimantUid: 'frank',
-  },
-  {
-    merchantName: 'Bay Area Optometry',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '210.00',
-    date: 'Aug 22, 2026',
-    type: 'Cleared',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    claimStatus: 'RESUBMITTED',
-    kind: 'ClaimReimbursement',
-    claimantUid: 'frank',
-  },
-  {
-    merchantName: 'Northside Dental Group',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '475.00',
-    date: 'Jul 14, 2026',
-    type: 'Cleared',
-    direction: 'MoneyIn',
-    benefit: 'HSA_FSA',
-    claimStatus: 'APPROVED',
-    kind: 'ClaimReimbursement',
-    claimantUid: 'frank',
-  },
-
   {
     merchantName: 'Employer Contribution',
     benefitAccount: 'General Health FSA',
@@ -147,30 +66,6 @@ export const clearedTransactions: Transaction[] = [
     isCardSwipe: true,
     kind: 'CardTransaction',
     cardId: 'card-frank-1234',
-  },
-  {
-    merchantName: 'Kroger Pharmacy',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '52.30',
-    date: 'Dec 05, 2025',
-    type: 'Cleared',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    isCardSwipe: true,
-    kind: 'CardTransaction',
-    cardId: 'card-frank-1234',
-  },
-  {
-    merchantName: 'City Medical Center',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '320.00',
-    date: 'Oct 18, 2025',
-    type: 'Cleared',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    claimStatus: 'IN_REVIEW',
-    kind: 'ClaimReimbursement',
-    claimantUid: 'frank',
   },
   {
     merchantName: 'Summit Chiropractic',
@@ -460,28 +355,6 @@ export const clearedTransactions: Transaction[] = [
 ];
 
 export const pendingTransactions: Transaction[] = [
-  {
-    merchantName: 'HSAStore.com',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '123.45',
-    date: 'Mar 18, 2026',
-    type: 'Pending',
-    direction: 'MoneyOut',
-    benefit: 'HSA_FSA',
-    isCardSwipe: true,
-    kind: 'CardTransaction',
-    cardId: 'card-frank-1234',
-  },
-  {
-    merchantName: 'Step Challenge Reward',
-    benefitAccount: 'Health Savings',
-    transactionAmount: '20.00',
-    date: 'Dec 19, 2026',
-    type: 'Pending',
-    direction: 'MoneyIn',
-    benefit: 'HSA_FSA',
-    kind: 'Deposit',
-  },
   {
     merchantName: 'Dermatology Associates',
     benefitAccount: 'General Health FSA',

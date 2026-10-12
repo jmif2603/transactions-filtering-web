@@ -3,7 +3,7 @@ import type { Transaction } from './transactions';
 // Investment activity (orders, dividends, transfers). Parked here so the
 // prototype's transaction list stays free of investment rows. In production
 // these live on the HSA ledger, so they are filed under Health Savings.
-export const investmentTransactions: Omit<Transaction, 'kind'>[] = [
+export const investmentTransactions: (Omit<Transaction, 'kind' | 'benefit'> & { benefit: 'HSA_FSA' })[] = [
   // InvestmentActivityTransaction variants
   {
     merchantName: 'AAPL - Apple Inc.',

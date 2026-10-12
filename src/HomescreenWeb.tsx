@@ -4,7 +4,7 @@ import SideNav, { healthWalletNavItemsEn, healthWalletNavItemsEs } from './compo
 import WalletTransactionListItemWeb from './components/WalletTransactionListItemWeb';
 import Button from './components/Button';
 import BenefitIconDuo from './components/BenefitIconDuo';
-import { IconArrowRight, IconChevronRight, IconPlus, IconHelpCircle, IconCalendar } from './components/icons';
+import { IconArrowRight, IconChevronRight, IconHelpCircle, IconCalendar } from './components/icons';
 import Input from './components/Input';
 import CommsIcon from './components/commsIcon';
 import CheckboxWithLabel from './components/CheckboxWithLabel';
@@ -649,9 +649,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
             Good morning, {userName}.
           </h1>
           <div style={{ display: 'flex', gap: 12 }}>
-            <Button variant="outline" size="medium" startIcon={<IconPlus size={14} />}>
-              Deposit
-            </Button>
             <Button variant="fill" size="medium">
               $ Reimburse
             </Button>
@@ -660,8 +657,8 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
 
         {/* Notification banner */}
         <NotificationBanner
-          title="HSA Monthly Account Statement"
-          body="Your HSA Monthly Account Statement of Sept. 2025 is ready for review."
+          title="Monthly Account Statement"
+          body="Your Monthly Account Statement of Sept. 2025 is ready for review."
           date="06-28-2022 06:07 AM"
         />
 
@@ -714,12 +711,6 @@ const HomescreenWeb = ({ userName = 'Frank' }: HomescreenWebProps) => {
 
         {/* Account cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
-          <AccountCard
-            icon={<BenefitIconDuo icon="HSA_FSA" />}
-            name="Health Savings"
-            amount="10,564.61"
-            subtitle="HSA + Investments"
-          />
           <AccountCard
             icon={<BenefitIconDuo icon="LPFSA" />}
             name="Dental & Vision"
